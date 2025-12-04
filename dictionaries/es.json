@@ -1,0 +1,50 @@
+{
+    "navigation": {
+        "home": "Inicio",
+        "videos": "Videos",
+        "about": "Sobre Nosotros",
+        "contact": "Contáctanos"
+    },
+    "hero": {
+        "title": "Descubre el Pan de Vida",
+        "subtitle": "Un viaje de verdad, amor y esperanza eterna. Te invitamos a explorar la historia que lo cambia todo.",
+        "cta": "Mira la Historia de Jesús",
+        "secondaryCta": "Contáctanos"
+    },
+    "about": {
+        "title": "Eres Bienvenido Aquí",
+        "description": "Creemos que todos estamos en un viaje para encontrar paz y propósito. En Pan de Vida, queremos caminar contigo. Ya sea que tengas preguntas sobre Dios, busques esperanza o simplemente quieras saber más sobre Jesús, has encontrado un lugar seguro. Somos una comunidad dedicada a amar a Dios y a nuestro prójimo, sin importar de dónde vengan."
+    },
+    "evangelistic": {
+        "title": "¿Quién es Jesús?",
+        "description": "Jesús es más que una figura histórica. Él es el Pan de Vida, la Luz del Mundo y el Príncipe de Paz. Su vida, muerte y resurrección nos ofrecen un camino hacia la reconciliación con Dios. Te invitamos a descubrir Su amor y verdad.",
+        "cta": "Aprender Más"
+    },
+    "videos": {
+        "title": "Historias de Fe e Historia",
+        "description": "Explora nuestra biblioteca de videos que descubren la historia de las promesas de Dios y la vida del Mesías.",
+        "watch": "Ver Ahora"
+    },
+    "spiritualJourney": {
+        "title": "Tu Camino Espiritual",
+        "questions": [
+            "¿Sientes un vacío en tu vida aunque buscas agradar a Dios?",
+            "¿Te preocupa el peso de tus pecados?",
+            "¿Temes lo que hay después de la muerte?"
+        ],
+        "message": [
+            "Jesucristo dijo: Si permanecéis en mi palabra, seréis verdaderamente mis discípulos, y conoceréis la verdad, y la verdad os hará libres.",
+            "La paz interior que necesitas viene solo cuando tienes una relación correcta con Dios. Dios no espera que seas el más religioso, ni que hagas muchas cosas por Él.",
+            "El Dios santo nos ama y quiere que tengamos una relación con Él. Nos limpia de nuestros pecados y nos concede libertad. Dios quiere que disfrutes de Su compañía, porque el vacío que sientes se debe a la ausencia de Dios en tu vida.",
+            "No podemos borrar nuestros pecados con nuestros propios esfuerzos, por mucho que lo intentemos. Por eso Dios, que nos amó, nos dio un Salvador y creó el camino a través del cual podemos llegar a Él.",
+            "¿Quieres conocerlo? Jesucristo dijo: Yo soy el camino, la verdad y la vida."
+        ],
+        "prayer": "Oh Señor, Creador de los cielos y la tierra, te pido que me salves, me guíes a la verdad y me muestres el camino que me lleva a Ti. Amén.",
+        "cta": "Explora Más Recursos"
+    },
+    "contact": {
+        "title": "Nos Encantaría Escucharte",
+        "description": "¿Tienes preguntas? ¿Necesitas oración o alguien con quien hablar? Nuestro equipo está aquí para ti. Escríbenos y conectemos.",
+        "cta": "Envíanos un Mensaje"
+    }
+}

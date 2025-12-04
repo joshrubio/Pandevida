@@ -1,0 +1,50 @@
+{
+    "navigation": {
+        "home": "Home",
+        "videos": "Videos",
+        "about": "About",
+        "contact": "Contact Us"
+    },
+    "hero": {
+        "title": "Discover the Bread of Life",
+        "subtitle": "A journey of truth, love, and eternal hope. We invite you to explore the story that changes everything.",
+        "cta": "Watch the Story of Jesus",
+        "secondaryCta": "Contact Us"
+    },
+    "about": {
+        "title": "You Are Welcome Here",
+        "description": "We believe that everyone is on a journey to find peace and purpose. At Pan de Vida, we want to walk with you. Whether you have questions about God, are looking for hope, or simply want to know more about Jesus, you have found a safe place. We are a community dedicated to loving God and loving our neighbors—no matter where they come from."
+    },
+    "evangelistic": {
+        "title": "Who is Jesus?",
+        "description": "Jesus is more than a historical figure. He is the Bread of Life, the Light of the World, and the Prince of Peace. His life, death, and resurrection offer us a path to reconciliation with God. We invite you to discover His love and truth.",
+        "cta": "Learn More"
+    },
+    "videos": {
+        "title": "Stories of Faith & History",
+        "description": "Explore our library of videos that uncover the history of God's promises and the life of the Messiah.",
+        "watch": "Watch Now"
+    },
+    "spiritualJourney": {
+        "title": "Your Spiritual Journey",
+        "questions": [
+            "Do you feel an emptiness in your life even though you seek to please God?",
+            "Are you troubled by your sense of sins and wrongdoings?",
+            "Do you fear what lies beyond death?"
+        ],
+        "message": [
+            "Jesus Christ said: If you abide in my word, you are truly my disciples, and you will know the truth, and the truth will set you free.",
+            "The inner peace you need comes only when you have a right relationship with God. God does not expect you to be the most religious, or to do many things for Him.",
+            "The holy God loves us and wants us to have a relationship with Him. He cleanses us from our sins and grants us freedom. God wants you to enjoy His company, because the emptiness you feel is caused by the absence of God in your life.",
+            "We cannot erase our sins by our own efforts, no matter how hard we try. That is why God, who loved us, gave us a Savior and created the way through which we can come to Him.",
+            "Do you want to know Him? Jesus Christ said: I am the way, the truth, and the life."
+        ],
+        "prayer": "O Lord, Creator of the heavens and the earth, I ask You to save me, guide me to the truth, and lead me to the path that brings me to You. Amen.",
+        "cta": "Explore More Resources"
+    },
+    "contact": {
+        "title": "We'd Love to Hear From You",
+        "description": "Do you have questions? Do you need prayer or someone to talk to? Our team is here for you. Reach out to us via email, WhatsApp, or phone.",
+        "cta": "Send us a Message"
+    }
+}
