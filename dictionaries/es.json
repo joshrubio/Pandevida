@@ -46,5 +46,11 @@
         "title": "Nos Encantaría Escucharte",
         "description": "¿Tienes preguntas? ¿Necesitas oración o alguien con quien hablar? Nuestro equipo está aquí para ti. Escríbenos y conectemos.",
         "cta": "Envíanos un Mensaje"
+    },
+    "bibleReading": {
+        "title": "Lectura de la Biblia",
+        "description": "Descubre la sabiduría de la Palabra de Dios. Comienza a leer Mateo 2 hoy.",
+        "cta": "Leer Ahora",
+        "link": "https://www.bible.com/bible/128/MAT.2.NVI"
     }
 }

@@ -1,16 +1,8 @@
 'use client';
 
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { useRef } from 'react';
 import { Button } from '@/components/ui/button';
-import { Play } from 'lucide-react';
-import { motion } from 'framer-motion';
-import {
-    Dialog,
-    DialogContent,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger,
-} from "@/components/ui/dialog";
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 interface VideoGalleryProps {
     dictionary: {
@@ -27,97 +19,178 @@ const videos = [
         id: 'jesus-film',
         title: 'The Jesus Film',
         titleAr: 'فيلم عن حياة يسوع المسيح',
-        thumbnail: 'https://img.youtube.com/vi/xsLfWCCOsT8/maxresdefault.jpg',
+        description: 'Experience the life of Jesus Christ in this powerful film that has touched millions of lives around the world. A journey of faith, hope, and love.',
         embedUrl: 'https://www.youtube.com/embed/xsLfWCCOsT8',
     },
     {
         id: 'king-of-glory',
         title: 'King of Glory',
         titleAr: 'ملك المجد',
-        thumbnail: 'https://img.youtube.com/vi/zvJQbR_ATHA/maxresdefault.jpg',
+        description: 'Discover the King of Glory in this compelling visual narrative. Uncover the ancient prophecies and their fulfillment in a story that spans eternity.',
         embedUrl: 'https://www.youtube.com/embed/zvJQbR_ATHA',
     },
     {
         id: 'way-of-righteousness',
         title: 'The Way of Righteousness',
         titleAr: 'برنامج طريق البر',
-        thumbnail: 'https://img.youtube.com/vi/C9Bmt-LI1Z4/maxresdefault.jpg',
+        description: 'Walk the path of righteousness through these enlightening teachings. Explore deep spiritual truths and find guidance for your daily walk with God.',
         embedUrl: 'https://www.youtube.com/embed/C9Bmt-LI1Z4',
     },
     {
         id: 'whats-your-question',
         title: "What's Your Question?",
         titleAr: 'برنامج أشنو سؤالك',
-        thumbnail: 'https://img.youtube.com/vi/E_IC7rMW8ys/maxresdefault.jpg',
+        description: 'Got questions about faith? We have answers. Join us as we explore common questions and seek truth together in this engaging series.',
         embedUrl: 'https://www.youtube.com/embed/E_IC7rMW8ys',
     },
 ];
 
-export function VideoGallery({ dictionary }: VideoGalleryProps) {
-    return (
-        <section id="videos" className="py-12 sm:py-16 md:py-20 bg-secondary/30">
-            <div className="container px-4 sm:px-6 md:px-8">
-                <div className="text-center max-w-3xl mx-auto mb-10 md:mb-16">
-                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-4 text-primary">
-                        {dictionary.videos.title}
-                    </h2>
-                    <p className="text-base md:text-lg text-muted-foreground">
-                        {dictionary.videos.description}
-                    </p>
-                </div>
+function VideoSection({ video, index, dictionary }: { video: typeof videos[0], index: number, dictionary: any }) {
+    const ref = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ["start end", "end start"]
+    });
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                    {videos.map((video, index) => (
+    const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
+    const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+    const isEven = index % 2 === 0;
+
+    // Dynamic background styles
+    const bgStyle = isEven
+        ? "bg-gradient-to-br from-background via-secondary/5 to-background"
+        : "bg-gradient-to-bl from-primary/5 via-background to-secondary/5";
+
+    const pattern = isEven ? "bg-grid-pattern" : "bg-dot-pattern";
+
+    return (
+        <section ref={ref} className={`min-h-[80vh] flex items-center justify-center py-20 overflow-hidden relative ${bgStyle}`}>
+            {/* Background Pattern */}
+            <div className={`absolute inset-0 ${pattern} opacity-[0.05]`} />
+
+            {/* Animated Background Blobs */}
+            <motion.div
+                animate={{
+                    scale: [1, 1.2, 1],
+                    opacity: [0.2, 0.4, 0.2],
+                }}
+                transition={{
+                    duration: 8,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                }}
+                className="absolute top-0 left-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"
+            />
+            <motion.div
+                animate={{
+                    scale: [1, 1.1, 1],
+                    opacity: [0.2, 0.4, 0.2],
+                }}
+                transition={{
+                    duration: 10,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 2
+                }}
+                className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-secondary/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"
+            />
+
+            <div className="container px-4 sm:px-6 md:px-8 relative z-10">
+                <motion.div
+                    style={{ opacity }}
+                    className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${isEven ? '' : 'lg:grid-flow-dense'}`}
+                >
+                    {/* Video Column */}
+                    <div className={`relative ${isEven ? 'lg:order-1' : 'lg:order-2'}`}>
                         <motion.div
-                            key={video.id}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ delay: index * 0.1 }}
-                            viewport={{ once: true }}
+                            style={{ y }}
+                            className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl border border-border/50"
+                            whileHover={{ scale: 1.02 }}
+                            transition={{ duration: 0.5 }}
                         >
-                            <Dialog>
-                                <DialogTrigger asChild>
-                                    <Card className="group cursor-pointer hover:shadow-lg transition-all duration-300 border-none overflow-hidden">
-                                        <div className="relative aspect-video overflow-hidden">
-                                            <img
-                                                src={video.thumbnail}
-                                                alt={video.title}
-                                                className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-500"
-                                            />
-                                            <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors flex items-center justify-center">
-                                                <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform">
-                                                    <Play className="w-7 h-7 md:w-8 md:h-8 text-white fill-white" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <CardHeader className="p-4 md:p-6">
-                                            <CardTitle className="text-lg md:text-xl group-hover:text-primary transition-colors">
-                                                {video.title}
-                                            </CardTitle>
-                                        </CardHeader>
-                                        <CardFooter className="p-4 md:p-6 pt-0">
-                                            <Button variant="ghost" className="w-full text-sm md:text-base group-hover:bg-primary/10 group-hover:text-primary">
-                                                {dictionary.videos.watch}
-                                            </Button>
-                                        </CardFooter>
-                                    </Card>
-                                </DialogTrigger>
-                                <DialogContent className="max-w-4xl p-0 overflow-hidden bg-black border-none">
-                                    <div className="aspect-video w-full">
-                                        <iframe
-                                            src={video.embedUrl}
-                                            title={video.title}
-                                            className="w-full h-full"
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                            allowFullScreen
-                                        />
-                                    </div>
-                                </DialogContent>
-                            </Dialog>
+                            <iframe
+                                src={video.embedUrl}
+                                title={video.title}
+                                className="w-full h-full"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                            />
                         </motion.div>
-                    ))}
-                </div>
+                        {/* Decorative elements behind video */}
+                        <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-primary/10 blur-3xl rounded-full opacity-50" />
+                    </div>
+
+                    {/* Content Column */}
+                    <div className={`space-y-6 ${isEven ? 'lg:order-2' : 'lg:order-1'}`}>
+                        <motion.div
+                            initial={{ opacity: 0, x: isEven ? 50 : -50 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.8, delay: 0.2 }}
+                            viewport={{ once: true }}
+                            className="bg-background/50 backdrop-blur-sm p-8 rounded-3xl border border-border/50 shadow-sm"
+                        >
+                            <h3 className="text-3xl md:text-4xl font-bold text-primary mb-2">
+                                {video.title}
+                            </h3>
+                            <h4 className="text-xl md:text-2xl font-arabic text-muted-foreground mb-6">
+                                {video.titleAr}
+                            </h4>
+                            <p className="text-lg text-muted-foreground leading-relaxed mb-8">
+                                {video.description}
+                            </p>
+                            <Button size="lg" className="group rounded-full shadow-lg hover:shadow-xl transition-all" asChild>
+                                <a href={video.embedUrl.replace('/embed/', '/watch?v=')} target="_blank" rel="noopener noreferrer">
+                                    {dictionary.videos.watch}
+                                    <motion.span
+                                        className="ml-2"
+                                        initial={{ x: 0 }}
+                                        whileHover={{ x: 5 }}
+                                    >
+                                        →
+                                    </motion.span>
+                                </a>
+                            </Button>
+                        </motion.div>
+                    </div>
+                </motion.div>
             </div>
         </section>
+    );
+}
+
+export function VideoGallery({ dictionary }: VideoGalleryProps) {
+    return (
+        <div id="videos" className="bg-background relative">
+            <div className="py-20 text-center space-y-4">
+                <motion.h2
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary"
+                >
+                    {dictionary.videos.title}
+                </motion.h2>
+                <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.1 }}
+                    className="text-lg text-muted-foreground max-w-2xl mx-auto px-4"
+                >
+                    {dictionary.videos.description}
+                </motion.p>
+            </div>
+
+            <div className="space-y-0">
+                {videos.map((video, index) => (
+                    <VideoSection
+                        key={video.id}
+                        video={video}
+                        index={index}
+                        dictionary={dictionary}
+                    />
+                ))}
+            </div>
+        </div>
     );
 }

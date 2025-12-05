@@ -46,5 +46,23 @@
         "title": "نود أن نسمع منك",
         "description": "هل لديك أسئلة؟ هل تحتاج إلى صلاة أو شخص للتحدث معه؟ فريقنا هنا من أجلك. تواصل معنا عبر البريد الإلكتروني أو الواتساب أو الهاتف.",
         "cta": "أرسل لنا رسالة"
+    },
+    "bibleReading": {
+        "title": "قراءة الكتاب المقدس",
+        "description": "اكتشف حكمة كلمة الله. ابدأ بقراءة متى 2 اليوم.",
+        "cta": "اقرأ الآن",
+        "link": "https://www.bible.com/bible/128/MAT.2.NVI"
+    },
+    "yourStory": {
+        "title": "قصتك",
+        "description": "اكتشف رسالة خاصة لك. حمل الكتيب الآن.",
+        "cta": "اقرأ قصتك",
+        "link": "https://rockintl.org/rock-document/arabic-your-story/"
+    },
+    "moroccoTestimonies": {
+        "title": "شهادات من المغرب",
+        "description": "شاهد قصصاً ملهمة لأشخاص وجدوا الحق والنور. استمع إلى اختباراتهم.",
+        "cta": "شاهد الشهادات",
+        "link": "https://www.maarifa.org/index.php?option=com_audiovisual&view=category&catid=462&Itemid=325"
     }
 }

@@ -32,7 +32,8 @@ export function HeroSection({ dictionary }: HeroSectionProps) {
                 style={{ y, opacity }}
                 className="absolute inset-0 z-0"
             >
-                <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-background z-10" />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-background z-10" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_rgba(0,0,0,0.4)_100%)] z-10" />
                 <div
                     className="w-full h-full bg-cover bg-center"
                     style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1504052434569-70ad5836ab65?q=80&w=2070&auto=format&fit=crop)' }}

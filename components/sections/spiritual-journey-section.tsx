@@ -20,8 +20,16 @@ export function SpiritualJourneySection({ dictionary }: SpiritualJourneySectionP
     if (!dictionary.spiritualJourney) return null;
 
     return (
-        <section className="py-16 sm:py-20 md:py-24 bg-gradient-to-b from-secondary/20 to-background">
-            <div className="container px-4 sm:px-6 md:px-8">
+        <section className="py-16 sm:py-20 md:py-24 relative overflow-hidden">
+            {/* Background Gradients */}
+            <div className="absolute inset-0 bg-gradient-to-b from-secondary/30 via-background to-background" />
+            <div className="absolute top-0 left-0 w-full h-full bg-grid-pattern opacity-[0.1]" />
+
+            {/* Floating Elements */}
+            <div className="absolute top-20 left-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl animate-pulse" />
+            <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/20 rounded-full blur-3xl animate-pulse delay-1000" />
+
+            <div className="container relative z-10 px-4 sm:px-6 md:px-8">
                 <div className="max-w-4xl mx-auto">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -43,7 +51,8 @@ export function SpiritualJourneySection({ dictionary }: SpiritualJourneySectionP
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ delay: index * 0.1 }}
                                 viewport={{ once: true }}
-                                className="bg-card p-6 rounded-xl shadow-sm border border-border/50 text-center"
+                                whileHover={{ y: -5 }}
+                                className="bg-card/50 backdrop-blur-sm p-6 rounded-xl shadow-sm border border-border/50 text-center hover:shadow-md transition-all duration-300"
                             >
                                 <div className="mb-4 flex justify-center">
                                     {index === 0 && <Heart className="h-8 w-8 text-primary" />}
@@ -79,7 +88,7 @@ export function SpiritualJourneySection({ dictionary }: SpiritualJourneySectionP
                         initial={{ opacity: 0, scale: 0.95 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
-                        className="bg-primary/5 border border-primary/20 rounded-2xl p-6 md:p-8 mb-8 text-center"
+                        className="bg-gradient-to-br from-primary/5 to-secondary/10 border border-primary/10 rounded-2xl p-6 md:p-8 mb-8 text-center shadow-inner"
                     >
                         <p className="text-base md:text-lg italic text-foreground/80 leading-relaxed">
                             {dictionary.spiritualJourney.prayer}
@@ -87,7 +96,7 @@ export function SpiritualJourneySection({ dictionary }: SpiritualJourneySectionP
                     </motion.div>
 
                     <div className="text-center">
-                        <Button size="lg" className="text-base md:text-lg px-6 md:px-8 py-5 md:py-6 rounded-full">
+                        <Button size="lg" className="text-base md:text-lg px-8 md:px-10 py-6 md:py-7 rounded-full shadow-lg hover:shadow-xl transition-all">
                             {dictionary.spiritualJourney.cta}
                         </Button>
                     </div>

@@ -46,5 +46,11 @@
         "title": "We'd Love to Hear From You",
         "description": "Do you have questions? Do you need prayer or someone to talk to? Our team is here for you. Reach out to us via email, WhatsApp, or phone.",
         "cta": "Send us a Message"
+    },
+    "bibleReading": {
+        "title": "Read the Bible",
+        "description": "Discover the wisdom of God's Word. Start reading Matthew 2 today.",
+        "cta": "Read Now",
+        "link": "https://www.bible.com/bible/128/MAT.2.NVI"
     }
 }

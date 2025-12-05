@@ -1,6 +1,8 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
+import logo from '@/components/images/logo-compact.png';
 import { usePathname } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import {
@@ -49,6 +51,13 @@ export function Navbar({ dictionary, lang }: NavbarProps) {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-14 sm:h-16 items-center justify-between px-4 sm:px-6 md:px-8">
         <Link href={`/${lang}`} className="flex items-center space-x-2">
+          <Image
+            src={logo}
+            alt="Pan de Vida Logo"
+            width={50}
+            height={50}
+            className="w-12 h-12 object-contain"
+          />
           <span className="text-lg sm:text-xl font-bold text-primary">Pan de Vida</span>
         </Link>
 
@@ -66,16 +75,26 @@ export function Navbar({ dictionary, lang }: NavbarProps) {
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon" className="h-9 w-9">
+              <Button variant="ghost" size="sm" className="gap-2 px-2 sm:px-3">
                 <Globe className="h-4 w-4" />
-                <span className="sr-only">Switch Language</span>
+                <span className="font-medium hidden sm:inline-block">
+                  {lang === 'en' ? 'English' : lang === 'es' ? 'Español' : 'العربية'}
+                </span>
+                <span className="font-medium sm:hidden">
+                  {lang.toUpperCase()}
+                </span>
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               {i18n.locales.map((locale) => (
                 <DropdownMenuItem key={locale} asChild>
-                  <Link href={redirectedPathName(locale)}>
-                    {locale.toUpperCase()}
+                  <Link href={redirectedPathName(locale)} className="flex items-center gap-2 cursor-pointer w-full">
+                    <span className="text-lg">
+                      {locale === 'en' ? '🇺🇸' : locale === 'es' ? '🇪🇸' : '🇲🇦'}
+                    </span>
+                    <span>
+                      {locale === 'en' ? 'English' : locale === 'es' ? 'Español' : 'العربية'}
+                    </span>
                   </Link>
                 </DropdownMenuItem>
               ))}
@@ -113,8 +132,8 @@ export function Navbar({ dictionary, lang }: NavbarProps) {
                     key={locale}
                     href={redirectedPathName(locale)}
                     className={`text-sm font-bold px-3 py-1 rounded-md transition-colors ${lang === locale
-                        ? 'text-primary bg-primary/10'
-                        : 'text-muted-foreground hover:text-primary hover:bg-muted'
+                      ? 'text-primary bg-primary/10'
+                      : 'text-muted-foreground hover:text-primary hover:bg-muted'
                       }`}
                   >
                     {locale.toUpperCase()}
