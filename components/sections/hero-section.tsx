@@ -54,14 +54,6 @@ export function HeroSection({ dictionary }: HeroSectionProps) {
                     <p className="text-base sm:text-lg md:text-xl text-gray-200 mb-6 md:mb-8 max-w-2xl mx-auto leading-relaxed">
                         {dictionary.hero.subtitle}
                     </p>
-                    <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
-                        <Button size="lg" className="text-base md:text-lg px-6 md:px-8 py-5 md:py-6 rounded-full w-full sm:w-auto">
-                            {dictionary.hero.cta}
-                        </Button>
-                        <Button size="lg" variant="outline" className="text-base md:text-lg px-6 md:px-8 py-5 md:py-6 rounded-full bg-transparent text-white border-white hover:bg-white/10 hover:text-white w-full sm:w-auto">
-                            {dictionary.hero.secondaryCta}
-                        </Button>
-                    </div>
                 </motion.div>
             </div>
         </section>
