@@ -23,7 +23,7 @@ export async function sendEmail(formData: FormData) {
         const data = await resend.emails.send({
             from: 'Pan de Vida <onboarding@resend.dev>',
             to: ['khubzalhayat@gmail.com'],
-            reply_to: email, // This ensures when you click reply, it goes to the person who filled the form
+            replyTo: email, // This ensures when you click reply, it goes to the person who filled the form
             subject: `New Message from ${name} (${email})`,
             text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
         });
