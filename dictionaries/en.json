@@ -23,10 +23,24 @@
     "videos": {
         "title": "Stories of Faith & History",
         "description": "Explore our library of videos that uncover the history of God's promises and the life of the Messiah.",
-        "watch": "Watch Now"
+        "watch": "Watch Now",
+        "items": [
+            {
+                "id": "jesus-film-en",
+                "title": "Jesus film",
+                "description": "Although no actor is worthy of portraying the life of Jesus, this film was made in order to help us learn about the story of the life of Jesus Christ while He was here on earth. The film is based on the narrative of the Gospel of Luke. We encourage you to watch it; in the introduction you will discover why it was so necessary for Jesus to come.",
+                "embedUrl": "https://www.youtube.com/embed/-Td05XH0TDg"
+            },
+            {
+                "id": "king-of-glory-en",
+                "title": "Film: The King of Glory",
+                "description": "This film takes you on a captivating chronological journey of 15 episodes through the ancient Scriptures of the prophets, presenting their story and message in a clear and understandable way.",
+                "embedUrl": "https://www.youtube.com/embed/Z3OYJbu4tSA"
+            }
+        ]
     },
     "spiritualJourney": {
-        "title": "Your Spiritual Journey",
+        "title": "The Good News",
         "questions": [
             "Do you feel an emptiness in your life even though you seek to please God?",
             "Are you troubled by your sense of sins and wrongdoings?",
@@ -45,12 +59,31 @@
     "contact": {
         "title": "We'd Love to Hear From You",
         "description": "Do you have questions? Do you need prayer or someone to talk to? Our team is here for you. Reach out to us via email, WhatsApp, or phone.",
-        "cta": "Send us a Message"
+        "cta": "Send us a Message",
+        "form": {
+            "nameLabel": "Name",
+            "namePlaceholder": "Your name",
+            "emailLabel": "Email",
+            "emailPlaceholder": "Your email",
+            "messageLabel": "Message",
+            "messagePlaceholder": "How can we help you?",
+            "sending": "Sending...",
+            "successTitle": "Message Sent!",
+            "successMessage": "Thank you for reaching out. We will get back to you soon.",
+            "sendAnother": "Send Another Message",
+            "errorGeneric": "Something went wrong. Please try again."
+        }
     },
     "bibleReading": {
-        "title": "Read the Bible",
-        "description": "Discover the wisdom of God's Word. Start reading Matthew 2 today.",
+        "title": "Read or listen to the Bible online",
+        "description": "The Word of God is living and powerful; experience it for yourself! Enjoy reading it and let God speak to you through it.",
         "cta": "Read Now",
-        "link": "https://www.bible.com/bible/128/MAT.2.NVI"
+        "link": "https://www.bible.com/bible/59/MAT.2.ESV"
+    },
+    "yourStory": {
+        "title": "Your Story",
+        "description": "This small booklet offers you an overview of the Bible and shows how your own story can be forever connected to the story of your Creator. In its 36 pages, it summarizes the greatest story and the greatest message ever told.",
+        "cta": "Read More",
+        "link": "https://rockintl.org/rock-document/your-story-english/"
     }
 }

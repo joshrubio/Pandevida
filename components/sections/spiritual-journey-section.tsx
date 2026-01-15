@@ -43,7 +43,7 @@ export function SpiritualJourneySection({ dictionary }: SpiritualJourneySectionP
                     </motion.div>
 
                     {/* Questions */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-12">
+                    <div className={`grid grid-cols-1 ${dictionary.spiritualJourney.questions.length === 2 ? 'md:grid-cols-2' : 'md:grid-cols-3'} gap-6 md:gap-8 mb-12`}>
                         {dictionary.spiritualJourney.questions.map((question, index) => (
                             <motion.div
                                 key={index}
@@ -57,7 +57,7 @@ export function SpiritualJourneySection({ dictionary }: SpiritualJourneySectionP
                                 <div className="mb-4 flex justify-center">
                                     {index === 0 && <Heart className="h-8 w-8 text-primary" />}
                                     {index === 1 && <BookOpen className="h-8 w-8 text-primary" />}
-                                    {index === 2 && <Users className="h-8 w-8 text-primary" />}
+                                    {index >= 2 && <Users className="h-8 w-8 text-primary" />}
                                 </div>
                                 <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
                                     {question}
@@ -83,17 +83,7 @@ export function SpiritualJourneySection({ dictionary }: SpiritualJourneySectionP
                         ))}
                     </motion.div>
 
-                    {/* Prayer */}
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        className="bg-gradient-to-br from-primary/5 to-secondary/10 border border-primary/10 rounded-2xl p-6 md:p-8 mb-8 text-center shadow-inner"
-                    >
-                        <p className="text-base md:text-lg italic text-foreground/80 leading-relaxed">
-                            {dictionary.spiritualJourney.prayer}
-                        </p>
-                    </motion.div>
+
 
                     <div className="text-center">
                         <Button size="lg" className="text-base md:text-lg px-8 md:px-10 py-6 md:py-7 rounded-full shadow-lg hover:shadow-xl transition-all">

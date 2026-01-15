@@ -10,6 +10,9 @@ import { ContactForm } from "@/components/sections/contact-form";
 import { Footer } from "@/components/layout/footer";
 import { BibleReading } from "@/components/sections/bible-reading";
 import { FeaturedResources } from "@/components/sections/featured-resources";
+import { YourStorySection } from "@/components/sections/your-story-section";
+
+import { TestimoniesSection } from "@/components/sections/testimonies-section";
 
 export async function generateStaticParams() {
   return i18n.locales.map((locale) => ({ lang: locale }));
@@ -38,16 +41,11 @@ export default async function Home({
       {/* Light/Background */}
       <VideoGallery dictionary={dictionary} />
 
-      {/* New Section: Featured Resources (Arabic Only) - Light Background */}
-      {/* @ts-ignore - these keys might not exist on all dictionary types */}
-      {((dictionary as any).yourStory || (dictionary as any).moroccoTestimonies) && (
-        <FeaturedResources
-          resources={[
-            (dictionary as any).yourStory,
-            (dictionary as any).moroccoTestimonies
-          ].filter(Boolean)}
-        />
-      )}
+      {/* New Section: Your Story - Full Width */}
+      <YourStorySection dictionary={dictionary as any} />
+
+      {/* New Section: Testimonies (Arabic Only) - Full Width */}
+      <TestimoniesSection dictionary={dictionary as any} />
 
       {/* Gradient Background */}
       <SpiritualJourneySection dictionary={dictionary} />

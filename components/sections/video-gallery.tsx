@@ -4,48 +4,25 @@ import { useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
+interface Video {
+    id: string;
+    title: string;
+    description: string;
+    embedUrl: string;
+}
+
 interface VideoGalleryProps {
     dictionary: {
         videos: {
             title: string;
             description: string;
             watch: string;
+            items: Video[];
         };
     };
 }
 
-const videos = [
-    {
-        id: 'jesus-film',
-        title: 'The Jesus Film',
-        titleAr: 'فيلم عن حياة يسوع المسيح',
-        description: 'Experience the life of Jesus Christ in this powerful film that has touched millions of lives around the world. A journey of faith, hope, and love.',
-        embedUrl: 'https://www.youtube.com/embed/xsLfWCCOsT8',
-    },
-    {
-        id: 'king-of-glory',
-        title: 'King of Glory',
-        titleAr: 'ملك المجد',
-        description: 'Discover the King of Glory in this compelling visual narrative. Uncover the ancient prophecies and their fulfillment in a story that spans eternity.',
-        embedUrl: 'https://www.youtube.com/embed/zvJQbR_ATHA',
-    },
-    {
-        id: 'way-of-righteousness',
-        title: 'The Way of Righteousness',
-        titleAr: 'برنامج طريق البر',
-        description: 'Walk the path of righteousness through these enlightening teachings. Explore deep spiritual truths and find guidance for your daily walk with God.',
-        embedUrl: 'https://www.youtube.com/embed/C9Bmt-LI1Z4',
-    },
-    {
-        id: 'whats-your-question',
-        title: "What's Your Question?",
-        titleAr: 'برنامج أشنو سؤالك',
-        description: 'Got questions about faith? We have answers. Join us as we explore common questions and seek truth together in this engaging series.',
-        embedUrl: 'https://www.youtube.com/embed/E_IC7rMW8ys',
-    },
-];
-
-function VideoSection({ video, index, dictionary }: { video: typeof videos[0], index: number, dictionary: any }) {
+function VideoSection({ video, index, dictionary }: { video: Video, index: number, dictionary: any }) {
     const ref = useRef(null);
     const { scrollYProgress } = useScroll({
         target: ref,
@@ -132,9 +109,6 @@ function VideoSection({ video, index, dictionary }: { video: typeof videos[0], i
                             <h3 className="text-3xl md:text-4xl font-bold text-primary mb-2">
                                 {video.title}
                             </h3>
-                            <h4 className="text-xl md:text-2xl font-arabic text-muted-foreground mb-6">
-                                {video.titleAr}
-                            </h4>
                             <p className="text-lg text-muted-foreground leading-relaxed mb-8">
                                 {video.description}
                             </p>
@@ -159,6 +133,8 @@ function VideoSection({ video, index, dictionary }: { video: typeof videos[0], i
 }
 
 export function VideoGallery({ dictionary }: VideoGalleryProps) {
+    if (!dictionary.videos.items) return null;
+
     return (
         <div id="videos" className="bg-background relative">
             <div className="py-20 text-center space-y-4">
@@ -182,7 +158,7 @@ export function VideoGallery({ dictionary }: VideoGalleryProps) {
             </div>
 
             <div className="space-y-0">
-                {videos.map((video, index) => (
+                {dictionary.videos.items.map((video, index) => (
                     <VideoSection
                         key={video.id}
                         video={video}
