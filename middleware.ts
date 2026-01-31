@@ -9,17 +9,27 @@ function getLocale(request: NextRequest): string | undefined {
     const negotiatorHeaders: Record<string, string> = {};
     request.headers.forEach((value, key) => (negotiatorHeaders[key] = value));
 
-    // @ts-ignore locales are readonly
-    const locales: string[] = i18n.locales;
+    // Standard BCP 47 codes for matching
+    const standardLocales = ['en', 'es', 'ar'];
 
-    // Use negotiator and intl-localematcher to get best locale
-    let languages = new Negotiator({ headers: negotiatorHeaders }).languages(
-        locales
-    );
+    // Use negotiator to get preferred languages from browser
+    let languages = new Negotiator({ headers: negotiatorHeaders }).languages();
 
-    const locale = matchLocale(languages, locales, i18n.defaultLocale);
+    try {
+        // Match browser languages against standard codes
+        const match = matchLocale(languages, standardLocales, 'en');
 
-    return locale;
+        // Map browser code to our custom full-name slugs
+        const localeMap: Record<string, string> = {
+            'en': 'english',
+            'es': 'spanish',
+            'ar': 'arabic'
+        };
+
+        return localeMap[match] || 'english';
+    } catch (e) {
+        return 'english';
+    }
 }
 
 export function middleware(request: NextRequest) {

@@ -2,10 +2,10 @@ import 'server-only';
 import type { Locale } from './i18n-config';
 
 const dictionaries = {
-    en: () => import('./dictionaries/en.json').then((module) => module.default),
-    es: () => import('./dictionaries/es.json').then((module) => module.default),
-    ar: () => import('./dictionaries/ar.json').then((module) => module.default),
+    english: () => import('./dictionaries/en.json').then((module) => module.default),
+    spanish: () => import('./dictionaries/es.json').then((module) => module.default),
+    arabic: () => import('./dictionaries/ar.json').then((module) => module.default),
 };
 
 export const getDictionary = async (locale: Locale) =>
-    dictionaries[locale]?.() ?? dictionaries.en();
+    dictionaries[locale]?.() ?? dictionaries.english();

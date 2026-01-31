@@ -78,10 +78,10 @@ export function Navbar({ dictionary, lang }: NavbarProps) {
               <Button variant="ghost" size="sm" className="gap-2 px-2 sm:px-3">
                 <Globe className="h-4 w-4" />
                 <span className="font-medium hidden sm:inline-block">
-                  {lang === 'en' ? 'English' : lang === 'es' ? 'Español' : 'العربية'}
+                  {lang === 'english' ? 'English' : lang === 'spanish' ? 'Español' : 'العربية'}
                 </span>
                 <span className="font-medium sm:hidden">
-                  {lang.toUpperCase()}
+                  {lang.substring(0, 2).toUpperCase()}
                 </span>
               </Button>
             </DropdownMenuTrigger>
@@ -90,10 +90,10 @@ export function Navbar({ dictionary, lang }: NavbarProps) {
                 <DropdownMenuItem key={locale} asChild>
                   <Link href={redirectedPathName(locale)} className="flex items-center gap-2 cursor-pointer w-full">
                     <span className="text-lg">
-                      {locale === 'en' ? '🇺🇸' : locale === 'es' ? '🇪🇸' : '🇲🇦'}
+                      {locale === 'english' ? '🇺🇸' : locale === 'spanish' ? '🇪🇸' : '🇲🇦'}
                     </span>
                     <span>
-                      {locale === 'en' ? 'English' : locale === 'es' ? 'Español' : 'العربية'}
+                      {locale === 'english' ? 'English' : locale === 'spanish' ? 'Español' : 'العربية'}
                     </span>
                   </Link>
                 </DropdownMenuItem>
@@ -136,7 +136,7 @@ export function Navbar({ dictionary, lang }: NavbarProps) {
                       : 'text-muted-foreground hover:text-primary hover:bg-muted'
                       }`}
                   >
-                    {locale.toUpperCase()}
+                    {locale.substring(0, 2).toUpperCase()}
                   </Link>
                 ))}
               </div>

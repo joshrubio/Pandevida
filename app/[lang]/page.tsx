@@ -27,7 +27,7 @@ export default async function Home({
   const dictionary = await getDictionary(lang);
 
   return (
-    <main className="min-h-screen flex flex-col" lang={lang} dir={lang === 'ar' ? 'rtl' : 'ltr'}>
+    <main className="min-h-screen flex flex-col" lang={lang} dir={lang === 'arabic' ? 'rtl' : 'ltr'}>
       <Navbar dictionary={dictionary} lang={lang} />
 
       <HeroSection dictionary={dictionary} />
