@@ -17,7 +17,7 @@ function getLocale(request: NextRequest): string | undefined {
 
     try {
         // Match browser languages against standard codes
-        const match = matchLocale(languages, standardLocales, 'en');
+        const match = matchLocale(languages, standardLocales, 'ar');
 
         // Map browser code to our custom full-name slugs
         const localeMap: Record<string, string> = {
@@ -26,9 +26,9 @@ function getLocale(request: NextRequest): string | undefined {
             'ar': 'arabic'
         };
 
-        return localeMap[match] || 'english';
+        return localeMap[match] || 'arabic';
     } catch {
-        return 'english';
+        return 'arabic';
     }
 }
 

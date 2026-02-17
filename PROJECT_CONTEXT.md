@@ -19,7 +19,7 @@ This document provides a comprehensive overview of the Pandevida project to ensu
 - `arabic` (RTL support enabled)
 
 ### Key Files
-- `i18n-config.ts`: Defines default and supported locales.
+- `i18n-config.ts`: Defines default (`arabic`) and supported locales.
 - `middleware.ts`: Handles redirection based on browser language and path prefixes.
 - `get-dictionary.ts`: Server-side logic to load JSON translation files.
 - `dictionaries/`: Contains `.json` files for each language (`en.json`, `es.json`, `ar.json`).
