@@ -3,6 +3,8 @@
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 
+import { type Locale } from '@/i18n-config';
+
 interface EvangelisticSectionProps {
     dictionary: {
         evangelistic: {
@@ -11,9 +13,14 @@ interface EvangelisticSectionProps {
             cta: string;
         };
     };
+    lang: Locale;
 }
 
-export function EvangelisticSection({ dictionary }: EvangelisticSectionProps) {
+export function EvangelisticSection({ dictionary, lang }: EvangelisticSectionProps) {
+    const ctaLink = lang === 'arabic'
+        ? "https://www.youtube.com/watch?v=4LHtk9qu7EM&list=PLE-WJwzRxHRDlNKG63cw4w6rKx31hNgVt&index=1"
+        : "https://www.gotquestions.org/Espanol/Quien-es-Jesucristo.html";
+
     return (
         <section className="py-16 sm:py-20 md:py-24 bg-primary text-primary-foreground overflow-hidden relative">
             <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1510936111840-65e151ad71bb?q=80&w=2090&auto=format&fit=crop')] bg-cover bg-center opacity-10 mix-blend-overlay" />
@@ -45,8 +52,10 @@ export function EvangelisticSection({ dictionary }: EvangelisticSectionProps) {
                         transition={{ delay: 0.4 }}
                         viewport={{ once: true }}
                     >
-                        <Button size="lg" variant="secondary" className="text-base md:text-lg px-6 md:px-8 py-5 md:py-6 rounded-full shadow-lg hover:shadow-xl transition-shadow">
-                            {dictionary.evangelistic.cta}
+                        <Button asChild size="lg" variant="secondary" className="text-base md:text-lg px-6 md:px-8 py-5 md:py-6 rounded-full shadow-lg hover:shadow-xl transition-shadow">
+                            <a href={ctaLink} target="_blank" rel="noopener noreferrer">
+                                {dictionary.evangelistic.cta}
+                            </a>
                         </Button>
                     </motion.div>
                 </div>

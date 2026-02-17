@@ -7,13 +7,18 @@
     },
     "hero": {
         "title": "Discover the Bread of Life",
-        "subtitle": "A journey of truth, love, and eternal hope. We invite you to explore the story that changes everything.",
+        "subtitle": "At 'Bread of Life', we want to walk with you. In this space you will find articles, resources, and links that will help you know God.",
         "cta": "Watch the Story of Jesus",
         "secondaryCta": "Contact Us"
     },
     "about": {
-        "title": "You Are Welcome Here",
-        "description": "We believe that everyone is on a journey to find peace and purpose. At Pan de Vida, we want to walk with you. Whether you have questions about God, are looking for hope, or simply want to know more about Jesus, you have found a safe place. We are a community dedicated to loving God and loving our neighbors—no matter where they come from."
+        "title": "Who We Are",
+        "description": [
+            "We are a community of people who wish to share with everyone what God has done in us. We have experienced the <b>forgiveness of our sins</b>, <b>peace with God</b>, the true meaning of life, His love, and a <b>real transformation</b> in our hearts.",
+            "All this is something great that we cannot stop sharing. Each person carries a void inside and tries to fill it in many ways, but <b>only God can truly fill it</b>. It is not about religion, rules, or rituals, but about a <b>living and authentic relationship</b> with our great God and Creator.",
+            "At <i>'Bread of Life'</i>, <b>we want to walk with you</b>. Through this space, you will find articles, resources, and links that will help you know God and experience His forgiveness and love.",
+            "If you have questions about God, are looking for hope, or wish to learn more about <i>'the way, the truth, and the life'</i>, this is your place. Here you will find a safe, respectful, and loving environment. We are a community committed to loving God and loving people, regardless of their background, history, or situation."
+        ]
     },
     "evangelistic": {
         "title": "Who is Jesus?",
@@ -21,7 +26,7 @@
         "cta": "Learn More"
     },
     "videos": {
-        "title": "Stories of Faith & History",
+        "title": "Discover More",
         "description": "Explore our library of videos that uncover the history of God's promises and the life of the Messiah.",
         "watch": "Watch Now",
         "items": [
@@ -33,9 +38,22 @@
             },
             {
                 "id": "king-of-glory-en",
-                "title": "Film: The King of Glory",
-                "description": "This film takes you on a captivating chronological journey of 15 episodes through the ancient Scriptures of the prophets, presenting their story and message in a clear and understandable way.",
-                "embedUrl": "https://www.youtube.com/embed/Z3OYJbu4tSA"
+                "title": "Watch the King of Glory Movie",
+                "description": "This movie takes you on a captivating 15-episode chronological journey through the ancient Scriptures of the prophets, presenting their story and message in a clear and understandable way.",
+                "embedUrl": "https://www.youtube.com/embed/BMI1csgWWsQ?list=PL9cJRl8EYnLfvbC_RI0j97AYKe-bJqe72",
+                "link": "https://www.youtube.com/watch?v=BMI1csgWWsQ&list=PL9cJRl8EYnLfvbC_RI0j97AYKe-bJqe72"
+            },
+            {
+                "id": "bible-story-en",
+                "title": "The Story of the Bible",
+                "description": "This video summarizes the overall story of the Bible as a series of crossroad decisions. All humanity, followed by the Israelites, redefine good and evil and end up in Babylon. They are followed by Jesus, who takes a different path that opens up the way to a new creation.",
+                "embedUrl": "https://www.youtube.com/embed/7_CGP-12AE0"
+            },
+            {
+                "id": "what-is-bible-en",
+                "title": "What is the Bible?",
+                "description": "Learn about the Bible and how to read it well: from an introduction to the important differences of the various literary genres compiled within.",
+                "embedUrl": "https://www.youtube.com/embed/plSNIwhAn5o"
             }
         ]
     },
@@ -47,19 +65,19 @@
             "Do you fear what lies beyond death?"
         ],
         "message": [
-            "Jesus Christ said: If you abide in my word, you are truly my disciples, and you will know the truth, and the truth will set you free.",
-            "The inner peace you need comes only when you have a right relationship with God. God does not expect you to be the most religious, or to do many things for Him.",
-            "The holy God loves us and wants us to have a relationship with Him. He cleanses us from our sins and grants us freedom. God wants you to enjoy His company, because the emptiness you feel is caused by the absence of God in your life.",
+            "Jesus Christ said: <i>If you abide in my word, you are truly my disciples, and you will know the truth, and the truth will set you free.</i>",
+            "The <b>inner peace</b> you need comes only when you have a <b>right relationship with God</b>. God does not expect you to be the most religious, or to do many things for Him.",
+            "The holy God loves us and wants us to have a relationship with Him. He cleanses us from our sins and grants us <b>freedom</b>. God wants you to enjoy His company, because the emptiness you feel is caused by the absence of God in your life.",
             "We cannot erase our sins by our own efforts, no matter how hard we try. That is why God, who loved us, gave us a Savior and created the way through which we can come to Him.",
-            "Do you want to know Him? Jesus Christ said: I am the way, the truth, and the life."
+            "Do you want to know Him? Jesus Christ said: <b>I am the way, the truth, and the life.</b>"
         ],
         "prayer": "O Lord, Creator of the heavens and the earth, I ask You to save me, guide me to the truth, and lead me to the path that brings me to You. Amen.",
-        "cta": "Explore More Resources"
+        "cta": "Contact Us"
     },
     "contact": {
         "title": "We'd Love to Hear From You",
         "description": "Do you have questions? Do you need prayer or someone to talk to? Our team is here for you. Reach out to us via email, WhatsApp, or phone.",
-        "cta": "Send us a Message",
+        "cta": "Contact Us",
         "form": {
             "nameLabel": "Name",
             "namePlaceholder": "Your name",

@@ -13,7 +13,7 @@ function getLocale(request: NextRequest): string | undefined {
     const standardLocales = ['en', 'es', 'ar'];
 
     // Use negotiator to get preferred languages from browser
-    let languages = new Negotiator({ headers: negotiatorHeaders }).languages();
+    const languages = new Negotiator({ headers: negotiatorHeaders }).languages();
 
     try {
         // Match browser languages against standard codes
@@ -27,7 +27,7 @@ function getLocale(request: NextRequest): string | undefined {
         };
 
         return localeMap[match] || 'english';
-    } catch (e) {
+    } catch {
         return 'english';
     }
 }

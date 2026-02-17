@@ -9,6 +9,7 @@ import {
   Sheet,
   SheetContent,
   SheetTrigger,
+  SheetTitle,
 } from '@/components/ui/sheet';
 import { Menu, Globe } from 'lucide-react';
 import {
@@ -81,7 +82,7 @@ export function Navbar({ dictionary, lang }: NavbarProps) {
                   {lang === 'english' ? 'English' : lang === 'spanish' ? 'Español' : 'العربية'}
                 </span>
                 <span className="font-medium sm:hidden">
-                  {lang.substring(0, 2).toUpperCase()}
+                  {lang === 'english' ? 'EN' : lang === 'spanish' ? 'ES' : 'AR'}
                 </span>
               </Button>
             </DropdownMenuTrigger>
@@ -90,7 +91,7 @@ export function Navbar({ dictionary, lang }: NavbarProps) {
                 <DropdownMenuItem key={locale} asChild>
                   <Link href={redirectedPathName(locale)} className="flex items-center gap-2 cursor-pointer w-full">
                     <span className="text-lg">
-                      {locale === 'english' ? '🇺🇸' : locale === 'spanish' ? '🇪🇸' : '🇲🇦'}
+                      {locale === 'english' ? '🇺🇸' : locale === 'spanish' ? '🇪🇸' : '🇦🇷'}
                     </span>
                     <span>
                       {locale === 'english' ? 'English' : locale === 'spanish' ? 'Español' : 'العربية'}
@@ -115,35 +116,54 @@ export function Navbar({ dictionary, lang }: NavbarProps) {
             </Button>
           </SheetTrigger>
           <SheetContent side="right" className="w-[280px] sm:w-[320px]">
-            <nav className="flex flex-col gap-4 mt-8">
+            <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
+            <div className="flex flex-col items-center gap-4 mt-8 w-full">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-base sm:text-lg font-medium hover:text-primary transition-colors py-2"
+                  className="text-base sm:text-lg font-medium hover:text-primary transition-colors py-2 text-center w-full"
                 >
                   {link.label}
                 </Link>
               ))}
-              <div className="flex items-center gap-3 mt-4 pt-4 border-t">
-                <span className="text-sm font-medium text-muted-foreground">Language:</span>
-                {i18n.locales.map((locale) => (
+              <div className="w-full h-px bg-border my-2" />
+              <div className="flex flex-col items-center gap-3 mt-2 w-full">
+                <span className="text-sm font-medium text-muted-foreground p-2">Language / اللغة / Idioma</span>
+                <div className="flex items-center justify-center gap-4 w-full">
                   <Link
-                    key={locale}
-                    href={redirectedPathName(locale)}
-                    className={`text-sm font-bold px-3 py-1 rounded-md transition-colors ${lang === locale
+                    href={redirectedPathName('english')}
+                    className={`text-sm font-bold px-4 py-2 rounded-md transition-colors ${lang === 'english'
                       ? 'text-primary bg-primary/10'
                       : 'text-muted-foreground hover:text-primary hover:bg-muted'
                       }`}
                   >
-                    {locale.substring(0, 2).toUpperCase()}
+                    EN
                   </Link>
-                ))}
+                  <Link
+                    href={redirectedPathName('spanish')}
+                    className={`text-sm font-bold px-4 py-2 rounded-md transition-colors ${lang === 'spanish'
+                      ? 'text-primary bg-primary/10'
+                      : 'text-muted-foreground hover:text-primary hover:bg-muted'
+                      }`}
+                  >
+                    ES
+                  </Link>
+                  <Link
+                    href={redirectedPathName('arabic')}
+                    className={`text-sm font-bold px-4 py-2 rounded-md transition-colors ${lang === 'arabic'
+                      ? 'text-primary bg-primary/10'
+                      : 'text-muted-foreground hover:text-primary hover:bg-muted'
+                      }`}
+                  >
+                    AR
+                  </Link>
+                </div>
               </div>
               <Button asChild className="mt-6 w-full">
                 <Link href={`/${lang}/#contact`}>{dictionary.navigation.contact}</Link>
               </Button>
-            </nav>
+            </div>
           </SheetContent>
         </Sheet>
       </div>

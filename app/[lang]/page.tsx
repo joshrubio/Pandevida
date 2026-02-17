@@ -5,11 +5,10 @@ import { HeroSection } from "@/components/sections/hero-section";
 import { VideoGallery } from "@/components/sections/video-gallery";
 import { EvangelisticSection } from "@/components/sections/evangelistic-section";
 import { PastoralMessage } from "@/components/sections/pastoral-message";
-import { SpiritualJourneySection } from "@/components/sections/spiritual-journey-section";
+import { GoodNews } from "@/components/sections/good-news";
 import { ContactForm } from "@/components/sections/contact-form";
 import { Footer } from "@/components/layout/footer";
 import { BibleReading } from "@/components/sections/bible-reading";
-import { FeaturedResources } from "@/components/sections/featured-resources";
 import { YourStorySection } from "@/components/sections/your-story-section";
 
 import { TestimoniesSection } from "@/components/sections/testimonies-section";
@@ -36,19 +35,19 @@ export default async function Home({
       <BibleReading dictionary={dictionary} />
 
       {/* Dark/Primary Background */}
-      <EvangelisticSection dictionary={dictionary} />
+      <EvangelisticSection dictionary={dictionary} lang={lang} />
 
       {/* Light/Background */}
       <VideoGallery dictionary={dictionary} />
 
       {/* New Section: Your Story - Full Width */}
-      <YourStorySection dictionary={dictionary as any} />
+      <YourStorySection dictionary={dictionary} />
 
       {/* New Section: Testimonies (Arabic Only) - Full Width */}
-      <TestimoniesSection dictionary={dictionary as any} />
+      <TestimoniesSection dictionary={dictionary} />
 
       {/* Gradient Background */}
-      <SpiritualJourneySection dictionary={dictionary} />
+      <GoodNews dictionary={dictionary} />
 
       {/* Gradient/Light Background */}
       <PastoralMessage dictionary={dictionary} />

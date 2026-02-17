@@ -1,14 +1,16 @@
 'use client';
 
-import { useRef } from 'react';
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { Play, Share2, Info } from 'lucide-react';
 
 interface Video {
     id: string;
     title: string;
     description: string;
     embedUrl: string;
+    link?: string;
 }
 
 interface VideoGalleryProps {
@@ -22,151 +24,136 @@ interface VideoGalleryProps {
     };
 }
 
-function VideoSection({ video, index, dictionary }: { video: Video, index: number, dictionary: any }) {
-    const ref = useRef(null);
-    const { scrollYProgress } = useScroll({
-        target: ref,
-        offset: ["start end", "end start"]
-    });
+export function VideoGallery({ dictionary }: VideoGalleryProps) {
+    if (!dictionary.videos.items || dictionary.videos.items.length === 0) return null;
 
-    const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
-    const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
-    const isEven = index % 2 === 0;
-
-    // Dynamic background styles
-    const bgStyle = isEven
-        ? "bg-gradient-to-br from-background via-secondary/5 to-background"
-        : "bg-gradient-to-bl from-primary/5 via-background to-secondary/5";
-
-    const pattern = isEven ? "bg-grid-pattern" : "bg-dot-pattern";
+    const featuredVideo = dictionary.videos.items[0];
+    const collectionVideos = dictionary.videos.items.slice(1);
 
     return (
-        <section ref={ref} className={`min-h-[80vh] flex items-center justify-center py-20 overflow-hidden relative ${bgStyle}`}>
-            {/* Background Pattern */}
-            <div className={`absolute inset-0 ${pattern} opacity-[0.05]`} />
+        <section id="videos" className="bg-background relative overflow-hidden">
+            {/* 1. CINEMA MODE (Featured Video) */}
+            <div className="relative py-20 md:py-24 bg-zinc-950 text-white overflow-hidden">
+                {/* Cinematic Background */}
+                <div className="absolute inset-0 opacity-20">
+                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent z-10" />
+                    <img
+                        src={`https://img.youtube.com/vi/${featuredVideo.embedUrl.split('/').pop()?.split('?')[0]}/maxresdefault.jpg`}
+                        alt="Background"
+                        className="w-full h-full object-cover blur-xl scale-110"
+                    />
+                </div>
 
-            {/* Animated Background Blobs */}
-            <motion.div
-                animate={{
-                    scale: [1, 1.2, 1],
-                    opacity: [0.2, 0.4, 0.2],
-                }}
-                transition={{
-                    duration: 8,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                }}
-                className="absolute top-0 left-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"
-            />
-            <motion.div
-                animate={{
-                    scale: [1, 1.1, 1],
-                    opacity: [0.2, 0.4, 0.2],
-                }}
-                transition={{
-                    duration: 10,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: 2
-                }}
-                className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-secondary/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"
-            />
-
-            <div className="container px-4 sm:px-6 md:px-8 relative z-10">
-                <motion.div
-                    style={{ opacity }}
-                    className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${isEven ? '' : 'lg:grid-flow-dense'}`}
-                >
-                    {/* Video Column */}
-                    <div className={`relative ${isEven ? 'lg:order-1' : 'lg:order-2'}`}>
-                        <motion.div
-                            style={{ y }}
-                            className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl border border-border/50"
-                            whileHover={{ scale: 1.02 }}
-                            transition={{ duration: 0.5 }}
+                <div className="container relative z-20 px-4 sm:px-6 md:px-8">
+                    <div className="text-center mb-12">
+                        <motion.span
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            className="inline-block py-1 px-3 rounded-full bg-white/10 backdrop-blur-md text-white/80 text-xs font-medium tracking-wider mb-4 border border-white/10"
                         >
+                            PREMIERE / FEATURED
+                        </motion.span>
+                        <motion.h2
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            className="text-3xl md:text-5xl font-bold mb-4 tracking-tight"
+                        >
+                            {dictionary.videos.title}
+                        </motion.h2>
+                        <motion.p
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.1 }}
+                            className="text-zinc-400 max-w-2xl mx-auto text-lg"
+                        >
+                            {dictionary.videos.description}
+                        </motion.p>
+                    </div>
+
+                    {/* Featured Player */}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.7 }}
+                        viewport={{ once: true }}
+                        className="max-w-5xl mx-auto"
+                    >
+                        <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-zinc-900 group">
                             <iframe
-                                src={video.embedUrl}
-                                title={video.title}
+                                src={featuredVideo.embedUrl}
+                                title={featuredVideo.title}
                                 className="w-full h-full"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowFullScreen
                             />
-                        </motion.div>
-                        {/* Decorative elements behind video */}
-                        <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-primary/10 blur-3xl rounded-full opacity-50" />
-                    </div>
+                        </div>
 
-                    {/* Content Column */}
-                    <div className={`space-y-6 ${isEven ? 'lg:order-2' : 'lg:order-1'}`}>
-                        <motion.div
-                            initial={{ opacity: 0, x: isEven ? 50 : -50 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.8, delay: 0.2 }}
-                            viewport={{ once: true }}
-                            className="bg-background/50 backdrop-blur-sm p-8 rounded-3xl border border-border/50 shadow-sm"
-                        >
-                            <h3 className="text-3xl md:text-4xl font-bold text-primary mb-2">
-                                {video.title}
-                            </h3>
-                            <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-                                {video.description}
-                            </p>
-                            <Button size="lg" className="group rounded-full shadow-lg hover:shadow-xl transition-all" asChild>
-                                <a href={video.embedUrl.replace('/embed/', '/watch?v=')} target="_blank" rel="noopener noreferrer">
+                        <div className="mt-8 flex flex-col md:flex-row gap-6 md:items-start justify-between">
+                            <div className="flex-1">
+                                <h3 className="text-2xl md:text-3xl font-bold mb-2">{featuredVideo.title}</h3>
+                                <p className="text-zinc-400 leading-relaxed text-lg">{featuredVideo.description}</p>
+                            </div>
+                            <Button size="lg" className="rounded-full bg-white text-zinc-950 hover:bg-zinc-200 hover:scale-105 transition-all w-full md:w-auto" asChild>
+                                <a href={featuredVideo.link || featuredVideo.embedUrl.replace('/embed/', '/watch?v=')} target="_blank" rel="noopener noreferrer">
+                                    <Play className="mr-2 h-5 w-5 fill-current" />
                                     {dictionary.videos.watch}
-                                    <motion.span
-                                        className="ml-2"
-                                        initial={{ x: 0 }}
-                                        whileHover={{ x: 5 }}
-                                    >
-                                        →
-                                    </motion.span>
                                 </a>
                             </Button>
-                        </motion.div>
+                        </div>
+                    </motion.div>
+                </div>
+            </div>
+
+            {/* 2. THE COLLECTION (Grid) */}
+            {collectionVideos.length > 0 && (
+                <div className="py-20 bg-background">
+                    <div className="container px-4 sm:px-6 md:px-8">
+                        <div className="flex items-center justify-between mb-10 border-b border-border pb-4">
+                            <h3 className="text-xl font-semibold tracking-tight">More Stories</h3>
+                            <span className="text-sm text-muted-foreground">{collectionVideos.length} Videos</span>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            {collectionVideos.map((video, index) => (
+                                <motion.div
+                                    key={video.id}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: index * 0.1 }}
+                                    viewport={{ once: true }}
+                                    className="group flex flex-col"
+                                >
+                                    <div className="relative aspect-video rounded-xl overflow-hidden bg-muted mb-4 shadow-sm border border-border/50 group-hover:shadow-md transition-all group-hover:-translate-y-1">
+                                        <iframe
+                                            src={video.embedUrl}
+                                            title={video.title}
+                                            className="w-full h-full pointer-events-none group-hover:pointer-events-auto" // Hint at interactivity
+                                            loading="lazy"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowFullScreen
+                                        />
+                                        {/* Overlay for pure click-through if preferred, or remove pointer-events-none above for direct play */}
+                                    </div>
+
+                                    <div className="flex-1 flex flex-col">
+                                        <h4 className="text-lg font-bold mb-2 group-hover:text-primary transition-colors line-clamp-2">
+                                            {video.title}
+                                        </h4>
+                                        <p className="text-muted-foreground text-sm line-clamp-3 mb-4 flex-1">
+                                            {video.description}
+                                        </p>
+                                        <Button variant="outline" size="sm" className="w-fit rounded-full hover:bg-primary hover:text-primary-foreground" asChild>
+                                            <a href={video.link || video.embedUrl.replace('/embed/', '/watch?v=')} target="_blank" rel="noopener noreferrer">
+                                                {dictionary.videos.watch}
+                                            </a>
+                                        </Button>
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </div>
                     </div>
-                </motion.div>
-            </div>
+                </div>
+            )}
         </section>
-    );
-}
-
-export function VideoGallery({ dictionary }: VideoGalleryProps) {
-    if (!dictionary.videos.items) return null;
-
-    return (
-        <div id="videos" className="bg-background relative">
-            <div className="py-20 text-center space-y-4">
-                <motion.h2
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary"
-                >
-                    {dictionary.videos.title}
-                </motion.h2>
-                <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.1 }}
-                    className="text-lg text-muted-foreground max-w-2xl mx-auto px-4"
-                >
-                    {dictionary.videos.description}
-                </motion.p>
-            </div>
-
-            <div className="space-y-0">
-                {dictionary.videos.items.map((video, index) => (
-                    <VideoSection
-                        key={video.id}
-                        video={video}
-                        index={index}
-                        dictionary={dictionary}
-                    />
-                ))}
-            </div>
-        </div>
     );
 }

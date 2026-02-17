@@ -12,6 +12,7 @@ interface YourStorySectionProps {
             cta: string;
             link: string;
         };
+        [key: string]: unknown;
     };
 }
 

@@ -1,4 +1,4 @@
-import { Mail, Phone, MessageCircle } from 'lucide-react';
+import { Mail, Phone, MessageCircle, Instagram, Facebook } from 'lucide-react';
 import Link from 'next/link';
 
 interface FooterProps {
@@ -27,6 +27,14 @@ export function Footer({ dictionary }: FooterProps) {
                         <p className="text-sm md:text-base text-muted-foreground">
                             {dictionary.contact.description}
                         </p>
+                        <div className="flex gap-4 mt-4">
+                            <a href="https://www.instagram.com/khubzalhayat/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+                                <Instagram className="h-5 w-5" />
+                            </a>
+                            <a href="https://www.facebook.com/PanDeVidaAlmeria/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+                                <Facebook className="h-5 w-5" />
+                            </a>
+                        </div>
                     </div>
 
                     {/* Quick Links */}
@@ -53,19 +61,19 @@ export function Footer({ dictionary }: FooterProps) {
 
                     {/* Contact Info */}
                     <div className="sm:col-span-2 md:col-span-1">
-                        <h3 className="text-base md:text-lg font-semibold mb-3 md:mb-4">Contact</h3>
+                        <h3 className="text-base md:text-lg font-semibold mb-3 md:mb-4" dir="ltr">Contact</h3>
                         <ul className="space-y-3 md:space-y-4">
-                            <li className="flex items-center gap-2 text-sm md:text-base text-muted-foreground">
+                            <li className="flex items-center gap-2 text-sm md:text-base text-muted-foreground" dir="ltr">
                                 <Phone className="h-4 w-4 md:h-5 md:w-5 text-primary flex-shrink-0" />
                                 <a href="tel:+34624642344" className="hover:text-primary">+34 624 64 23 44</a>
                             </li>
-                            <li className="flex items-center gap-2 text-sm md:text-base text-muted-foreground">
+                            <li className="flex items-center gap-2 text-sm md:text-base text-muted-foreground" dir="ltr">
                                 <MessageCircle className="h-4 w-4 md:h-5 md:w-5 text-primary flex-shrink-0" />
                                 <a href="https://wa.me/34631930479" className="hover:text-primary">+34 631 93 04 79</a>
                             </li>
-                            <li className="flex items-center gap-2 text-sm md:text-base text-muted-foreground">
+                            <li className="flex items-center gap-2 text-sm md:text-base text-muted-foreground" dir="ltr">
                                 <Mail className="h-4 w-4 md:h-5 md:w-5 text-primary flex-shrink-0" />
-                                <a href="mailto:contact@pandevidaparati.com" className="hover:text-primary break-all">contact@pandevidaparati.com</a>
+                                <a href="mailto:khubzalhayat@gmail.com" className="hover:text-primary break-all">khubzalhayat@gmail.com</a>
                             </li>
                         </ul>
                     </div>
