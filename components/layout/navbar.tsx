@@ -115,7 +115,7 @@ export function Navbar({ dictionary, lang }: NavbarProps) {
               <span className="sr-only">Toggle menu</span>
             </Button>
           </SheetTrigger>
-          <SheetContent side="right" className="w-[280px] sm:w-[320px]">
+          <SheetContent side="right" className="w-[280px] sm:w-[320px] p-6">
             <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
             <div className="flex flex-col items-center gap-4 mt-8 w-full">
               {navLinks.map((link) => (
