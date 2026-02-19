@@ -55,7 +55,7 @@ export default async function Home({
       {/* Dark/Muted Background */}
       <ContactForm dictionary={dictionary} />
 
-      <Footer dictionary={dictionary} />
+      <Footer dictionary={dictionary} lang={lang} />
     </main>
   );
 }

@@ -59,7 +59,10 @@ export function Navbar({ dictionary, lang }: NavbarProps) {
             height={50}
             className="w-12 h-12 object-contain"
           />
-          <span className="text-lg sm:text-xl font-bold text-primary">Pan de Vida</span>
+          <div className="flex flex-col leading-tight">
+            <span className="text-lg sm:text-xl font-bold text-primary">Pan de Vida</span>
+            <span className="text-xs text-muted-foreground font-medium" dir="rtl" lang="ar">خبز الحياة</span>
+          </div>
         </Link>
 
         {/* Desktop Navigation */}

@@ -1,5 +1,6 @@
-import { Mail, Phone, MessageCircle, Instagram, Facebook } from 'lucide-react';
+import { Mail, MessageCircle, Instagram, Facebook } from 'lucide-react';
 import Link from 'next/link';
+import { Locale } from '@/i18n-config';
 
 interface FooterProps {
     dictionary: {
@@ -14,9 +15,10 @@ interface FooterProps {
             contact: string;
         }
     };
+    lang: Locale;
 }
 
-export function Footer({ dictionary }: FooterProps) {
+export function Footer({ dictionary, lang }: FooterProps) {
     return (
         <footer className="bg-muted py-10 md:py-12 border-t">
             <div className="container px-4 sm:px-6 md:px-8">
@@ -27,14 +29,16 @@ export function Footer({ dictionary }: FooterProps) {
                         <p className="text-sm md:text-base text-muted-foreground">
                             {dictionary.contact.description}
                         </p>
-                        <div className="flex gap-4 mt-4">
-                            <a href="https://www.instagram.com/khubzalhayat/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
-                                <Instagram className="h-5 w-5" />
-                            </a>
-                            <a href="https://www.facebook.com/PanDeVidaAlmeria/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
-                                <Facebook className="h-5 w-5" />
-                            </a>
-                        </div>
+                        {lang === 'arabic' && (
+                            <div className="flex gap-4 mt-4">
+                                <a href="https://www.instagram.com/khubzalhayat/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+                                    <Instagram className="h-5 w-5" />
+                                </a>
+                                <a href="https://www.facebook.com/PanDeVidaAlmeria/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+                                    <Facebook className="h-5 w-5" />
+                                </a>
+                            </div>
+                        )}
                     </div>
 
                     {/* Quick Links */}
@@ -64,7 +68,7 @@ export function Footer({ dictionary }: FooterProps) {
                         <h3 className="text-base md:text-lg font-semibold mb-3 md:mb-4" dir="ltr">Contact</h3>
                         <ul className="space-y-3 md:space-y-4">
                             <li className="flex items-center gap-2 text-sm md:text-base text-muted-foreground" dir="ltr">
-                                <Phone className="h-4 w-4 md:h-5 md:w-5 text-primary flex-shrink-0" />
+                                <MessageCircle className="h-4 w-4 md:h-5 md:w-5 text-primary flex-shrink-0" />
                                 <a href="tel:+34624642344" className="hover:text-primary">+34 624 64 23 44</a>
                             </li>
                             <li className="flex items-center gap-2 text-sm md:text-base text-muted-foreground" dir="ltr">
