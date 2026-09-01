@@ -1,6 +1,5 @@
 import { Mail, MessageCircle, Instagram, Facebook } from 'lucide-react';
 import Link from 'next/link';
-import { Locale } from '@/i18n-config';
 
 interface FooterProps {
     dictionary: {
@@ -15,10 +14,9 @@ interface FooterProps {
             contact: string;
         }
     };
-    lang: Locale;
 }
 
-export function Footer({ dictionary, lang }: FooterProps) {
+export function Footer({ dictionary }: FooterProps) {
     return (
         <footer className="bg-muted py-10 md:py-12 border-t">
             <div className="container px-4 sm:px-6 md:px-8">
@@ -29,16 +27,14 @@ export function Footer({ dictionary, lang }: FooterProps) {
                         <p className="text-sm md:text-base text-muted-foreground">
                             {dictionary.contact.description}
                         </p>
-                        {lang === 'arabic' && (
-                            <div className="flex gap-4 mt-4">
-                                <a href="https://www.instagram.com/khubzalhayat/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
-                                    <Instagram className="h-5 w-5" />
-                                </a>
-                                <a href="https://www.facebook.com/PanDeVidaAlmeria/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
-                                    <Facebook className="h-5 w-5" />
-                                </a>
-                            </div>
-                        )}
+                        <div className="flex gap-4 mt-4">
+                            <a href="https://www.instagram.com/khubz_al_hayat/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+                                <Instagram className="h-5 w-5" />
+                            </a>
+                            <a href="https://www.facebook.com/PanDeVidaAlmeria/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+                                <Facebook className="h-5 w-5" />
+                            </a>
+                        </div>
                     </div>
 
                     {/* Quick Links */}
